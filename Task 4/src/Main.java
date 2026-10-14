@@ -12,7 +12,7 @@ public class Main {
             System.out.println("National ID: INVALID");
         }
         Passport_services passports = new Passport_services();
-        Passportapplication p = passports.apply("CF343456565L");
+        Passportapplication p = passports.apply("CF234574884K");
         if (p != null) {
             System.out.println("Passport: " + p.getPassportNumber() + " for " + p.getHolderName());
         } else {
@@ -27,11 +27,18 @@ public class Main {
         }
 
         business_Services registry = new business_Services();
-        business b = registry.Register("Omega Cosmetics", "CF343456565L");
+        business b = registry.Register("Omega Cosmetics", "CF234574884K");
         if (b != null) {
             System.out.println("Business registered: " + b.getName() + " (owner: " + b.getOwnerName() + ")");
         } else {
             System.out.println("Registration REFUSED: invalid owner NIN");
+        }
+        Tax_Services taxService = new Tax_Services();
+        Tax_receipt r = taxService.fileTax(b, 1000000);
+        if (r != null) {
+            System.out.println("Tax for " + r.getBusinessName() + ": UGX " + r.getAmount());
+        } else {
+            System.out.println("Tax REFUSED: business not registered");
         }
     }
 }

@@ -3,13 +3,10 @@ package Registration;
 public class business {
     private String Name;
     private String OwnerName;
-    public business(String N, String O){
-        if (N==null){
-            N = "Unnamed business";
-        }else {
-            N= Name;
-        }
-        O = OwnerName;
+
+    public business(String N, String O) {
+        this.Name = (N == null) ? "Unnamed business" : N;
+        this.OwnerName = (O == null) ? "Unknown" : O;
     }
 
     public String getName() {
